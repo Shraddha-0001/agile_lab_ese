@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Get Team Details</title>
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+    ></script>
+  </head>
+  <body>
+    <div>
+      <form class="container1" style="text-align: center" id="teamDetailForm">
+        <h1>Team Details</h1>
+        <label for="tname">Team Name :</label>
+        <input type="text" id="tname" name="tname" /><br /><br />
+
+        <label for="sports">Select Sports </label>
+        <select name="sports" placeholder="select Sports">
+        
+          <option name="" value="" style="display: none">Select Sports</option>
+          <option name="sports" value="cricket">Cricket</option>
+          <option name="sports" value="football">Football</option>
+          <option name="sports" value="badminton">Badminton</option>
+          <option name="sports" value="basketball">Basketball</option>
+        </select>
+        <br />
+        <br />
+        <label for="tplayer"><h3>Team players</h3></label><br />
+
+        <div id="show_team" class="parent">
+          <div class="child">
+            <input type="text" name="playerName[]" placeholder="player name" />
+          </div>
+          <div class="child">
+            <button class="add_player">Add</button>
+          </div>
+        </div>
+        <br /><br />
+        <div>
+          <button class="button button1" id="SubmitForm">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".add_player").click(function (e) {
+          e.preventDefault();
+          $("#show_team").prepend( `<div id="show_team">
+          <div class="child">
+            <input type="text" name="playerName[]" placeholder="player name" />
+          </div>
+          <div class="child">
+            <button class="remove_player">Remove</button>
+          </div>
+        </div>`);
+        });
+
+        $(document).on("click", ".remove_player", function (e) {
+          e.preventDefault();
+          let row = $(this).parent().parent();
+          $(row).remove();
+        });
+
+        $("#teamDetailForm").submit(function (e) {
+          e.preventDefault();
+          $("#SubmitForm").val("Adding..");
+          $.ajax({
+            url: "/login/staffAdvLogin/getTeamDetils",
+            method: "post",
+            data: $(this).serialize(),
+            success: function (response) {
+              console.log(response);
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

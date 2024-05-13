@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Staff-Advisior Log In</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <form
+    action="/login/studentLogin/StudentUploadDocs"
+    method="post"
+    enctype="multipart/form-data"
+    class="container1"
+    style="text-align: center"
+   
+  >
+  <h1>Upload Documents</h1>
+
+  <label for="name"><b>Team Name  </b></label></b>
+  <input type="text" placeholder="Enter Team name" name="tname" id="fullname" required></br>
+
+  <label for="sports"><b>Select sports:</b> </label>
+  <select name="sports" placeholder="select Sports">
+  
+    <option value="" style="display: none">Select sports</option>
+    <option  value="cricket">Cricket</option>
+    <option  value="football">Football</option>
+    <option  value="badminton">Badminton</option>
+    <option  value="basketball">Basketball</option>
+  </select>
+</br></br>
+  <label for="myfile"><b>Select a documents:</b></label>
+  <input type="file" id="myfile"  name="upload" accept="image/*"><br><br>
+  <div class="clearfix">
+     <input type="submit" class="button button1" value="submit">
+   </div>
+  </form>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>View Documents</title>
+<link rel="stylesheet" href="/style.css" />
+
+</head>
+<body>
+
+<div class="container2">
+  <form style="text-align: center" action="/login/staffAdvisiorLogin/view_docs" method="POST">
+    
+    <label for="doc">Select Year </label>
+    <select id="ddlYears"></select><br>
+    <label for="doc">Select Month </label>
+    <select placeholder="select Month" id="month">
+        <option name="" value="" style="display:none;">Select Month</option>
+        <option name="January" value="Jan">January</option>
+        <option name="February" value="Feb">February</option>
+        <option name="March" value="Mar">March</option>
+        <option name="April" value="Apr">April</option>
+        <option name="January" value="Jan">May</option>
+        <option name="February" value="Feb">June</option>
+        <option name="March" value="Mar">July</option>
+        <option name="April" value="Apr">August</option>
+        <option name="January" value="Jan">September</option>
+        <option name="February" value="Feb">October</option>
+        <option name="March" value="Mar">November</option>
+        <option name="April" value="Apr">December</option>
+
+    </select><br>
+    <button class="button button1" type="submit"> View </button>   
+  </form>
+  <script type="text/javascript">
+    window.onload = function () {
+        //Reference the DropDownList.
+        var ddlYears = document.getElementById("ddlYears");
+ 
+        //Determine the Current Year.
+        var currentYear = (new Date()).getFullYear();
+ 
+        //Loop and add the Year values to DropDownList.
+        for (var i = 2015; i <= currentYear; i++) {
+            var option = document.createElement("OPTION");
+            option.innerHTML = i;
+            option.value = i;
+            ddlYears.appendChild(option);
+        }
+    };
+</script>
+
+</div>
+
+</body>
+</html>
